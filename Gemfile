@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Deploy with Capistrano
-gem 'capistrano', "2.15.5"
+gem 'capistrano'
 gem 'capistrano_colors'
 gem 'rvm-capistrano'
 
