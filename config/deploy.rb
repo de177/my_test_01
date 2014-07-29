@@ -38,6 +38,7 @@ end
 
 before "deploy:assets:precompile", "deploy:symlink_config_files"
 #after "deploy", "deploy:symlink_config_files"
+after "deploy", "deploy:migrate"
 after "deploy", "deploy:restart"
 after "deploy", "deploy:cleanup"
 
