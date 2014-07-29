@@ -35,7 +35,7 @@ task :symlink_config_files do
 end
 
 
-before "deploy:assets:precompile", "deploy:symlink_config_files "
+before "deploy:assets:precompile", "deploy:symlink_config_files"
 #after "deploy", "deploy:symlink_config_files"
 after "deploy", "deploy:restart"
 after "deploy", "deploy:cleanup"
