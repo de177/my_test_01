@@ -8,7 +8,7 @@ set :application, "my_test_01"
 
 set :repository, "ssh://git@github.com/de177/my_test_01.git"
 
-set :deploy_to, "/var/www/my_test_01"
+set :deploy_to, "/var/www/my_test_01/production"
 
 set :scm, :git
 set :branch, "master"
