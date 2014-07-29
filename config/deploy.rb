@@ -31,6 +31,7 @@ desc "Symlink shared config files"
 
 task :symlink_config_files do
     run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_release }/config/database.yml"
+    run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/unicorn.rb #{ current_release }/config/unicorn.rb"
     end
 end
 
