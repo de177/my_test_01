@@ -6,7 +6,7 @@ load 'deploy/assets'
 set :rvm_type, :system
 set :application, "my_test_01"
 
-set :repository, "git@github.com/de177/my_test_01.git"
+set :repository, "ssh://git@github.com/de177/my_test_01.git"
 
 set :deploy_to, "/var/www/my_test_01"
 
@@ -17,13 +17,26 @@ set :use_sudo, false
 
 set :rails_env, "production"
 set :deploy_via, :copy
+set :copy_dir, "/home/#{ user }/tmp"
+set :remote_copy_dir, "/tmp"
 
 set :keep_releases, 5
 role :web, "95.131.89.90"
 role :app, "95.131.89.90"
 role :db, "95.131.89.90", :primary => true
 
+namespace :deploy do
 
+desc "Symlink shared config files"
+
+task :symlink_config_files do
+    run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
+    end
+end
+
+after "deploy", "deploy:symlink_config_files"
+after "deploy", "deploy:restart"
+after "deploy", "deploy:cleanup"
 
 #set :application, "set your application name here"
 #set :repository,  "set your repository location here"
